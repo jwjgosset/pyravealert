@@ -47,7 +47,7 @@ mypy:
   script:
     - *build
     - python -m pip install .[dev]
-    - mypy pyravealert
+    - mypy --install-type --non-interactive --ignore-missing-imports pyravealert
 
 pytest:
   stage: test
