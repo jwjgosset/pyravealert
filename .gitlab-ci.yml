@@ -51,6 +51,9 @@ mypy:
 
 pytest:
   stage: test
+  variables:
+    RAVE_USERNAME: test
+    RAVE_PASSWORD: test
   script:
     - *build
     - python -m pip install .[dev]
