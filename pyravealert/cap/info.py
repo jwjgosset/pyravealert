@@ -10,8 +10,6 @@ from typing import Optional, List
 
 from enum import Enum
 
-import datetime
-
 from .eventcode import EventCode
 
 from .parameter import Parameter
@@ -96,14 +94,14 @@ class Info:
 
     eventCode: List[EventCode] = field(default_factory=list)
 
-    effective: Optional[datetime.datetime] = field(
-        default=None, metadata=dict(format='%Y-%m-%dT%H:%M:%S+00:00'))
+    # important to note that format must be YYYY-mm-ddTHH:MM:SS+HH:MM
+    # we have to use string since python datetime timezone offset doesn't
+    # support HH:MM format
+    effective: Optional[str] = field(default=None)
 
-    onset: Optional[datetime.datetime] = field(
-        default=None, metadata=dict(format='%Y-%m-%dT%H:%M:%S+00:00'))
+    onset: Optional[str] = field(default=None)
 
-    expires: Optional[datetime.datetime] = field(
-        default=None, metadata=dict(format='%Y-%m-%dT%H:%M:%S+00:00'))
+    expires: Optional[str] = field(default=None)
 
     senderName: Optional[str] = field(default=None)
 

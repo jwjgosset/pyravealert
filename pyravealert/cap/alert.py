@@ -8,8 +8,6 @@ from dataclasses import dataclass, field
 
 from typing import Optional, List
 
-import datetime
-
 from enum import Enum
 
 from .info import Info
@@ -48,8 +46,10 @@ class Alert:
 
     sender: str
 
-    sent: datetime.datetime = field(
-        metadata=dict(format='%Y-%m-%dT%H:%M:%S+00:00'))
+    # important to note that format must be YYYY-mm-ddTHH:MM:SS+HH:MM
+    # we have to use string since python datetime timezone offset doesn't
+    # support HH:MM format
+    sent: str
 
     status: Status
 

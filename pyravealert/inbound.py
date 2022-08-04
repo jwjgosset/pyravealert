@@ -103,7 +103,7 @@ def generate(
         incidents=incidents,
         # Required but not used
         sender=socket.gethostname(),
-        sent=datetime.datetime.utcnow(),
+        sent=datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S+00.00'),
         info=[Info(
             category=category,
             event=event,
