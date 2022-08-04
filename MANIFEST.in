@@ -1,0 +1,2 @@
+include versioneer.py
+include pyravealert/_version.py
