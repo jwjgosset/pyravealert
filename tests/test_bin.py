@@ -18,7 +18,7 @@ def test_rave_cli(requests_mock: Mocker):
     requests_mock.post(settings.url)
 
     runner = CliRunner()
-    result = runner.invoke(ravealert.main)
+    result = runner.invoke(ravealert.main, ["-e", "Test"])
 
     logging.info(result.exception)
 
