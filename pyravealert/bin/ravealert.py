@@ -156,6 +156,10 @@ def main(
     '''
     if log_level is not None:
         settings.log_level = LogLevels(log_level)
+    if username is not None:
+        settings.username = username
+    if password is not None:
+        settings.password = password
     settings.configure_logging()
 
     params = []
