@@ -9,13 +9,13 @@ import click
 
 from pyravealert import inbound
 
-from pyravealert.cap import to_string, from_file
+from pyoasiscap.cap import to_string, from_file
 
-from pyravealert.cap.parameter import Parameter
+from pyoasiscap.parameter import Parameter
 
-from pyravealert.cap.alert import Status, Scope
+from pyoasiscap.alert import Status, Scope
 
-from pyravealert.cap.info import ResponseType, Category
+from pyoasiscap.info import ResponseType, Category
 
 from pyravealert.config import get_app_settings, LogLevels
 

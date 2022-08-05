@@ -46,15 +46,15 @@ import requests
 
 from requests.auth import HTTPBasicAuth
 
-from .cap import to_string
+from pyoasiscap.cap import to_string
 
-from .cap.alert import Alert, Status, MsgType, Scope
+from pyoasiscap.alert import Alert, Status, MsgType, Scope
 
-from .cap.info import Info, Category, \
+from pyoasiscap.info import Info, Category, \
     ResponseType, Urgency, Certainty, Severity, EventCode, \
     Parameter, Area
 
-from .cap.geocode import GeoCode
+from pyoasiscap.geocode import GeoCode
 
 
 def generate(

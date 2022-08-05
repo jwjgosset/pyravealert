@@ -141,8 +141,9 @@ setup(
         'click',
         'pydantic',
         'pydantic[dotenv]',
-        'xsdata',
         'requests',
+        'pyoasiscap@git+\
+http://gitlab.seismo.nrcan.gc.ca/earthquake/pyoasiscap.git'
     ],  # Optional
 
     # List addidetect (e.g. development
