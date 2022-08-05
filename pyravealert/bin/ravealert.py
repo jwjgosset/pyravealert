@@ -9,7 +9,7 @@ import click
 
 from pyravealert import inbound
 
-from pyravealert.cap import to_string
+from pyravealert.cap import to_string, from_file
 
 from pyravealert.cap.parameter import Parameter
 
@@ -38,8 +38,12 @@ settings = get_app_settings()
     default=settings.password,
 )
 @click.option(
+    '--file',
+    type=click.Path(exists=True),
+    help='Get CAP content from file',
+)
+@click.option(
     '-e', '--event',
-    required=True,
     help='Event title of the message',
 )
 @click.option(
@@ -112,7 +116,8 @@ def main(
     url: str,
     username: str,
     password: str,
-    event: str,
+    file: Optional[str],
+    event: Optional[str],
     headline: Optional[str],
     description: Optional[str],
     instruction: Optional[str],
@@ -162,20 +167,25 @@ def main(
             valueName=parts[0], value=parts[1]
         ))
 
-    cap = inbound.generate(
-        status=Status(status),
-        scope=Scope(scope),
-        event=event,
-        language=language,
-        category=[Category(c) for c in category],
-        responseType=[ResponseType(r) for r in response_type],
-        headline=headline,
-        description=description,
-        instruction=instruction,
-        web=web,
-        contact=contact,
-        parameter=params,
-    )
+    if file is None:
+        if event is None:
+            raise ValueError('username/password not set')
+        cap = inbound.generate(
+            status=Status(status),
+            scope=Scope(scope),
+            event=event,
+            language=language,
+            category=[Category(c) for c in category],
+            responseType=[ResponseType(r) for r in response_type],
+            headline=headline,
+            description=description,
+            instruction=instruction,
+            web=web,
+            contact=contact,
+            parameter=params,
+        )
+    else:
+        cap = from_file(file)
 
     logging.debug(f'Generated CAP content: {cap}')
 
