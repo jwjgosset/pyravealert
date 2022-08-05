@@ -55,9 +55,9 @@ class Alert:
 
     msgType: MsgType
 
-    scope: Scope
-
     source: Optional[str] = field(default=None)
+
+    scope: Scope = field(default=Scope.private)
 
     restriction: Optional[str] = field(default=None)
 

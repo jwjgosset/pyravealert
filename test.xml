@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>pc-chblais.seismo.nrcan.gc.ca-gsc2022asrt-1659722347.948279</identifier>
+  <sender>https://www.earthquakescanada.nrcan.gc.ca/</sender>
+  <sent>2022-08-05T17:59:07+00:00</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <scope>Public</scope>
+  <source>Earthquakes Canada/Séisme Canada</source>
+  <code>profile:CAP-CP:0.4</code>
+  <code>layer:CAPAN:eventLocation</code>
+  <code>layer:EarthquakesCanada:0.1</code>
+  <info>
+    <language>en-CA</language>
+    <category>Geo</category>
+    <event>Earthquake</event>
+    <urgency>Immediate</urgency>
+    <severity>Severe</severity>
+    <certainty>Likely</certainty>
+    <eventCode>
+      <valueName>profile:CAP-CP:Event:0.4</valueName>
+      <value>earthquake</value>
+    </eventCode>
+    <eventCode>
+      <valueName>SAME</valueName>
+      <value>EQW</value>
+    </eventCode>
+    <effective>2022-08-05T17:59:07+00:00</effective>
+    <onset>2022-01-11T05:25:16+00:00</onset>
+    <expires>2022-08-10T17:59:07+00:00</expires>
+    <senderName>Government of Canada/ Natural Resources Canada/ Earthquakes Canada</senderName>
+    <headline>Earthquake 5.2M 321 km SW of Anchorage, AK at 2022-01-11 05:25 UTC</headline>
+    <description>An earthquake of magnitude 5.2M  321 km SW of Anchorage, AK occured at  2022-01-11 05:25 UTC</description>
+    <instruction>For information about preparing for earthquakes and  other related emergencies, please see  https://www.earthquakescanada.nrcan.gc.ca/info-gen/ prepare-preparer/index-en.php</instruction>
+    <web>https://www.earthquakescanada.nrcan.gc.ca/</web>
+    <contact>earthquakeinfo-infoseisme@nrcan-rncan.gc.ca</contact>
+    <parameter>
+      <valueName>layer:EarthquakesCanada:0.1:eventId</valueName>
+      <value>smi:ca.seismo/sc3-e1/Origin/20220111052817.446049.3695570</value>
+    </parameter>
+    <parameter>
+      <valueName>layer:EarthquakesCanada:0.1:magnitude</valueName>
+      <value>5.2</value>
+    </parameter>
+    <parameter>
+      <valueName>layer:EarthquakesCanada:0.1:magnitudeType</valueName>
+      <value>M</value>
+    </parameter>
+    <parameter>
+      <valueName>layer:EarthquakesCanada:0.1:latitude</valueName>
+      <value>58.6533</value>
+    </parameter>
+    <parameter>
+      <valueName>layer:EarthquakesCanada:0.1:longitude</valueName>
+      <value>-152.5131</value>
+    </parameter>
+    <parameter>
+      <valueName>layer:EarthquakesCanada:0.1:originTime</valueName>
+      <value>2022-01-11T05:25:16+00:00</value>
+    </parameter>
+    <parameter>
+      <valueName>layer:EarthquakesCanada:0.1:depth</valueName>
+      <value>5.0</value>
+    </parameter>
+    <parameter>
+      <valueName>layer:CAPAN:eventLocation:point</valueName>
+      <value>58.6533,-152.5131</value>
+    </parameter>
+    <area>
+      <areaDesc>321 km SW of Anchorage, AK</areaDesc>
+      <circle>58.6533,-152.5131 0</circle>
+      <geocode>
+        <valueName>profile:CAP-CP:Location:0.4</valueName>
+        <value>none</value>
+      </geocode>
+    </area>
+  </info>
+  <info>
+    <language>fr-CA</language>
+    <category>Geo</category>
+    <event>Tremblements de terre</event>
+    <urgency>Immediate</urgency>
+    <severity>Severe</severity>
+    <certainty>Likely</certainty>
+    <eventCode>
+      <valueName>profile:CAP-CP:Event:0.4</valueName>
+      <value>earthquake</value>
+    </eventCode>
+    <eventCode>
+      <valueName>SAME</valueName>
+      <value>EQW</value>
+    </eventCode>
+    <effective>2022-08-05T17:59:07+00:00</effective>
+    <onset>2022-01-11T05:25:16+00:00</onset>
+    <expires>2022-08-10T17:59:07+00:00</expires>
+    <senderName>Gouvernement du Canada/ Ressources naturelles Canada/ Séismes Canada</senderName>
+    <headline>Séismes 5.2M 321 km SO de Anchorage, AK à 2022-01-11 05:25 UTC</headline>
+    <description>Un séisme de magnitude 5.2M  321 km SO de Anchorage, AK s'est produit à 2022-01-11 05:25 UTC</description>
+    <instruction>Informations sur le préparation aux tremblements de  terre et autres urgences se trouvent à  https://www.seismescanada.rncan.gc.ca/info-gen/prepare-preparer/index-fr.php</instruction>
+    <web>https://www.seimescanada.rncan.gc.ca/</web>
+    <contact>earthquakeinfo-infoseisme@nrcan-rncan.gc.ca</contact>
+    <parameter>
+      <valueName>layer:EarthquakesCanada:0.1:eventId</valueName>
+      <value>smi:ca.seismo/sc3-e1/Origin/20220111052817.446049.3695570</value>
+    </parameter>
+    <parameter>
+      <valueName>layer:EarthquakesCanada:0.1:magnitude</valueName>
+      <value>5.2</value>
+    </parameter>
+    <parameter>
+      <valueName>layer:EarthquakesCanada:0.1:magnitudeType</valueName>
+      <value>M</value>
+    </parameter>
+    <parameter>
+      <valueName>layer:EarthquakesCanada:0.1:latitude</valueName>
+      <value>58.6533</value>
+    </parameter>
+    <parameter>
+      <valueName>layer:EarthquakesCanada:0.1:longitude</valueName>
+      <value>-152.5131</value>
+    </parameter>
+    <parameter>
+      <valueName>layer:EarthquakesCanada:0.1:originTime</valueName>
+      <value>2022-01-11T05:25:16+00:00</value>
+    </parameter>
+    <parameter>
+      <valueName>layer:EarthquakesCanada:0.1:depth</valueName>
+      <value>5.0</value>
+    </parameter>
+    <parameter>
+      <valueName>layer:CAPAN:eventLocation:point</valueName>
+      <value>58.6533,-152.5131</value>
+    </parameter>
+    <area>
+      <areaDesc>321 km SO de Anchorage, AK</areaDesc>
+      <circle>58.6533,-152.5131 0</circle>
+      <geocode>
+        <valueName>profile:CAP-CP:Location:0.4</valueName>
+        <value>none</value>
+      </geocode>
+    </area>
+  </info>
+</alert>
