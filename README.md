@@ -22,6 +22,19 @@ ravealert -e "WASP Test Alert" -H "Test of the Rave Alert system" -d "This is a 
 
 As per the example, our Rave system is setup that Infra alerts go to the GeekOnDuty.  To note the, --url and credentials are not shown in the example.
 
+### Rave configuration rules
+
+IT - GoDo
+
+- category = Infra
+- status = Test or Actual
+
+Aeneas
+
+- category = Geo
+- status = Test or Actual
+- parameter = layer:CHIS:source=aeneas
+
 ## Environment variables
 
 Some settings can be set by environment variables or in .env file in cwd.  For the list, see pyravealert/config.py.

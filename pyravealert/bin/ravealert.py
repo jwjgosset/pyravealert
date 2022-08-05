@@ -9,6 +9,8 @@ import click
 
 from pyravealert import inbound
 
+from pyravealert.cap import to_string
+
 from pyravealert.cap.parameter import Parameter
 
 from pyravealert.cap.alert import Status, Scope
@@ -97,6 +99,11 @@ settings = get_app_settings()
     help='Parameter by using = to divide value name and value'
 )
 @click.option(
+    '--stdout-only',
+    is_flag=True,
+    help='stdout only output (do not send)'
+)
+@click.option(
     '--log-level',
     type=click.Choice([v.value for v in LogLevels]),
     help='Verbosity'
@@ -117,6 +124,7 @@ def main(
     category: List[str],
     response_type: List[str],
     parameter: List[str],
+    stdout_only: bool,
     log_level: str,
 ):
     '''
@@ -145,9 +153,6 @@ def main(
         settings.log_level = LogLevels(log_level)
     settings.configure_logging()
 
-    if settings.username is None or settings.password is None:
-        raise ValueError('username/password not set')
-
     params = []
     for param in parameter:
         parts = param.split('=')
@@ -174,9 +179,14 @@ def main(
 
     logging.debug(f'Generated CAP content: {cap}')
 
-    inbound.send(
-        cap,
-        url,
-        username,
-        password
-    )
+    if stdout_only:
+        print(to_string(cap))
+    else:
+        if settings.username is None or settings.password is None:
+            raise ValueError('username/password not set')
+        inbound.send(
+            cap,
+            url,
+            username,
+            password
+        )
