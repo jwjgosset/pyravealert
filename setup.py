@@ -143,7 +143,7 @@ setup(
         'pydantic[dotenv]',
         'requests',
         'pyoasiscap@git+\
-http://gitlab.seismo.nrcan.gc.ca/earthquake/pyoasiscap.git'
+https://github.com/jwjgosset/pyoasiscap.git'
     ],  # Optional
 
     # List addidetect (e.g. development
