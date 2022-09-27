@@ -144,7 +144,8 @@ setup(
         'requests',
         'flask',
         'gunicorn',
-        'pyoasiscap@git+http://gitlab.seismo.nrcan.gc.ca/earthquake/pyoasiscap.git'
+        'pyoasiscap@git+'
+        'http://gitlab.seismo.nrcan.gc.ca/earthquake/pyoasiscap.git'
     ],  # Optional
 
     # List addidetect (e.g. development
