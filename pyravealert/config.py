@@ -11,6 +11,8 @@ from functools import lru_cache
 
 from pydantic import BaseSettings
 
+import tempfile
+
 
 class LogLevels(Enum):
     DEBUG: str = 'DEBUG'
@@ -28,6 +30,9 @@ class AppSettings(BaseSettings):
     url: str = 'http://localhost'
     username: Optional[str] = None
     password: Optional[str] = None
+
+    ws_port: int = 3000
+    ws_write_directory: str = tempfile.gettempdir()
 
     class Config:
         env_file = '.env'

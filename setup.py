@@ -142,6 +142,7 @@ setup(
         'pydantic',
         'pydantic[dotenv]',
         'requests',
+        'flask',
         'pyoasiscap@git+\
 http://gitlab.seismo.nrcan.gc.ca/earthquake/pyoasiscap.git'
     ],  # Optional
