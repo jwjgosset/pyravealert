@@ -143,6 +143,7 @@ setup(
         'pydantic[dotenv]',
         'requests',
         'flask',
+        'flask_httpauth',
         'gunicorn',
         'pyoasiscap@git+'
         'http://gitlab.seismo.nrcan.gc.ca/earthquake/pyoasiscap.git'

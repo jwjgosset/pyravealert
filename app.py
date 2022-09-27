@@ -10,6 +10,10 @@ from typing import Optional, Dict
 # Third-party library
 from flask import Flask, jsonify, request
 
+from flask_httpauth import HTTPBasicAuth
+
+from werkzeug.security import generate_password_hash, check_password_hash
+
 # User-contributed library
 from pyravealert.config import get_app_settings, LogLevels
 
@@ -67,8 +71,24 @@ def create_app():
     """Create flask API"""
     # Start the flask API
     app = Flask(__name__)
+    auth = HTTPBasicAuth()
+
+    @auth.verify_password
+    def verify_password(username: str, password: str) -> Optional[str]:
+        settings = get_app_settings()
+        if (
+            username in settings.ws_basic_auth
+            and
+            check_password_hash(
+                generate_password_hash(settings.ws_basic_auth[username]),
+                password,
+            )
+        ):
+            return username
+        return None
 
     @app.route('/', methods=['POST'])
+    @auth.login_required
     def post_cap():
         _set_flask_logging()
 

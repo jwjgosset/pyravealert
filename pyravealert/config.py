@@ -3,7 +3,7 @@
 '''
 import logging
 
-from typing import Optional
+from typing import Optional, Dict
 
 from enum import Enum
 
@@ -33,6 +33,7 @@ class AppSettings(BaseSettings):
 
     ws_port: int = 3000
     ws_write_directory: str = tempfile.gettempdir()
+    ws_basic_auth: Dict[str, str] = {}
 
     class Config:
         env_file = '.env'
