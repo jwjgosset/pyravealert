@@ -118,9 +118,11 @@ def create_app():
 
         settings = get_app_settings()
 
+        str_content = request.get_data().decode('iso-8859-2')
+
         # We attempt to parse to validate the content of the informat
         try:
-            alert = from_string(request.get_data().decode('ascii'))
+            alert = from_string(str_content)
         except Exception as err:
             logging.error(traceback.format_exc())
             raise GeneralException(str(err))
@@ -145,10 +147,10 @@ def create_app():
         # We store the results in file using the identifier has reference
         filename = str(Path(
             settings.ws_write_directory
-        ).joinpath(alert.identifier))
+        ).joinpath(alert.identifier)) + '.xml'
         logging.info(f'Writing result to {filename}')
-        with open(filename, 'wb') as fp:
-            fp.write(request.get_data())
+        with open(filename, 'w') as fp:
+            fp.write(str_content)
             fp.close()
 
         return jsonify({
