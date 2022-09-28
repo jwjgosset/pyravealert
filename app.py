@@ -17,9 +17,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # User-contributed library
 from pyravealert.config import get_app_settings, LogLevels
 
-from pyoasiscap.cap import from_string
+from pyoasiscap.cap import from_string, Alert
 
 from pathlib import Path
+
+import shutil
 
 import traceback
 
@@ -67,6 +69,28 @@ def _set_flask_logging():
     settings.configure_logging()
 
 
+def _validate_cap(alert: Alert):
+    """
+    We validate the message before accepting.  Key elements
+    that need to exist or not.
+
+    - Must contain a "---" with pre and post text
+    - No line starting with
+        - Insert a description
+        - Insérez une description
+    """
+    if len(alert.info) == 0:
+        raise InvalidUsage('No <info> element in the CAP alert')
+    description = alert.info[0].description
+    parts = description.split('---')
+    if len(parts) != 2:
+        raise InvalidUsage('Must be split by --- characters')
+    if parts[0].startswith('Insert'):
+        raise InvalidUsage('English not changed from default')
+    if parts[1].startswith('Insérez'):
+        raise InvalidUsage('French not changed from default')
+
+
 def create_app():
     """Create flask API"""
     # Start the flask API
@@ -103,10 +127,25 @@ def create_app():
 
         logging.info(f'Received CAP alert: {alert}')
 
+        # Before accepting the message, we make sure that key description
+        # elements are in the file.
+        _validate_cap(alert)
+
+        directory = Path(settings.ws_write_directory)
+        # Before writing the file, we make sure to mv all xml files in the
+        # web service directory to an archive folder.
+        archive = directory.joinpath('archive')
+        archive.mkdir(mode=0o755, parents=True, exist_ok=True)
+        for oldfile in directory.glob('*.xml'):
+            logging.info(f'Moving {oldfile} to archive')
+            shutil.move(
+                oldfile,
+                oldfile.parent.joinpath('archive', f'{oldfile.name}'))
+
         # We store the results in file using the identifier has reference
         filename = str(Path(
             settings.ws_write_directory
-        ).joinpath(alert.identifier)) + '.xml'
+        ).joinpath(alert.identifier))
         logging.info(f'Writing result to {filename}')
         with open(filename, 'w') as fp:
             fp.write(request.get_data().decode('utf-8'))

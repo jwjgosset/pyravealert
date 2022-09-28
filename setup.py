@@ -145,6 +145,7 @@ setup(
         'flask',
         'flask_httpauth',
         'gunicorn',
+        'shutil',
         'pyoasiscap@git+'
         'http://gitlab.seismo.nrcan.gc.ca/earthquake/pyoasiscap.git'
     ],  # Optional
