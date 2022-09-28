@@ -120,7 +120,7 @@ def create_app():
 
         # We attempt to parse to validate the content of the informat
         try:
-            alert = from_string(request.get_data().decode('utf-8'))
+            alert = from_string(request.get_data().decode('ascii'))
         except Exception as err:
             logging.error(traceback.format_exc())
             raise GeneralException(str(err))
@@ -147,8 +147,8 @@ def create_app():
             settings.ws_write_directory
         ).joinpath(alert.identifier))
         logging.info(f'Writing result to {filename}')
-        with open(filename, 'w') as fp:
-            fp.write(request.get_data().decode('utf-8'))
+        with open(filename, 'wb') as fp:
+            fp.write(request.get_data())
             fp.close()
 
         return jsonify({
