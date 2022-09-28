@@ -118,7 +118,10 @@ def create_app():
 
         settings = get_app_settings()
 
-        str_content = request.get_data().decode('iso-8859-2')
+        try:
+            str_content = request.get_data().decode('utf-8')
+        except UnicodeDecodeError:
+            str_content = request.get_data().decode('iso-8859-2')
 
         # We attempt to parse to validate the content of the informat
         try:
