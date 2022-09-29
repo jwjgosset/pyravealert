@@ -136,7 +136,8 @@ def create_app():
         # elements are in the file.
         _validate_cap(alert)
 
-        directory = Path(settings.ws_write_directory).joinpath(alert.status)
+        directory = Path(settings.ws_write_directory).joinpath(
+            str(alert.status.value).lower())
         # Before writing the file, we make sure to mv all xml files in the
         # web service directory to an archive folder.
         archive = directory.joinpath('archive')
