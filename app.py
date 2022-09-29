@@ -149,7 +149,7 @@ def create_app():
                 oldfile.parent.joinpath('archive', f'{oldfile.name}'))
 
         # We store the results in file using the identifier has reference
-        filename = directory.joinpath(alert.identifier) + '.xml'
+        filename = directory.joinpath(f'{alert.identifier}.xml')
         logging.info(f'Writing result to {filename}')
         with open(filename, 'w') as fp:
             fp.write(str_content)
