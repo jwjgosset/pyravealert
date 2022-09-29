@@ -136,7 +136,7 @@ def create_app():
         # elements are in the file.
         _validate_cap(alert)
 
-        directory = Path(settings.ws_write_directory)
+        directory = Path(settings.ws_write_directory).joinpath(alert.status)
         # Before writing the file, we make sure to mv all xml files in the
         # web service directory to an archive folder.
         archive = directory.joinpath('archive')
@@ -148,9 +148,7 @@ def create_app():
                 oldfile.parent.joinpath('archive', f'{oldfile.name}'))
 
         # We store the results in file using the identifier has reference
-        filename = str(Path(
-            settings.ws_write_directory
-        ).joinpath(alert.identifier)) + '.xml'
+        filename = directory.joinpath(alert.identifier) + '.xml'
         logging.info(f'Writing result to {filename}')
         with open(filename, 'w') as fp:
             fp.write(str_content)
