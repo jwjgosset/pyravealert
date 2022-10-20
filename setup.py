@@ -142,8 +142,11 @@ setup(
         'pydantic',
         'pydantic[dotenv]',
         'requests',
-        'pyoasiscap@git+\
-https://github.com/jwjgosset/pyoasiscap.git'
+        'flask',
+        'flask_httpauth',
+        'gunicorn',
+        'pyoasiscap@git+'
+        'https://github.com/jwjgosset/pyoasiscap.git'
     ],  # Optional
 
     # List addidetect (e.g. development

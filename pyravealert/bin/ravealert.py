@@ -173,7 +173,7 @@ def main(
 
     if file is None:
         if event is None:
-            raise ValueError('username/password not set')
+            raise ValueError('event is not set')
         cap = inbound.generate(
             status=Status(status),
             scope=Scope(scope),
